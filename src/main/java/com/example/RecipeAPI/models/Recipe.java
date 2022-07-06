@@ -31,18 +31,6 @@ public class Recipe {
     @Column(nullable = false)
     private Integer difficultyRating;
 
-
-    // trying to create average review of a recipe from collect reviews
-//    @Column(nullable = false)
-//    private Integer averageRating;
-//
-//    public Integer recipeRating(Recipe recipe){
-//        = sum of reivew ratings from review array list;
-//        averageRating = review1 rating + review 2 rating;
-//
-//        return 5;
-//    }
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipeId", nullable = false, foreignKey = @ForeignKey)
     private Collection<Ingredient> ingredients = new ArrayList<>();
@@ -54,6 +42,16 @@ public class Recipe {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipeId", nullable = false, foreignKey = @ForeignKey)
     private Collection<Review> reviews;
+
+
+    // trying to create average review of a recipe from multiple reviews
+    public Integer recipeRating(){
+        Integer averageRating = recipeRating();
+        for(Review review : reviews){
+            averageRating += review.getRating();
+        }
+        return averageRating;
+    }
 
     @Transient
     @JsonIgnore

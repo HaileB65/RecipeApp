@@ -10,4 +10,6 @@ import java.util.ArrayList;
 public interface RecipeRepo extends JpaRepository<Recipe, Long> {
 
     ArrayList<Recipe> findByNameContaining(String name);
+
+//    ArrayList<Recipe> findByRating(Integer rating);
 }

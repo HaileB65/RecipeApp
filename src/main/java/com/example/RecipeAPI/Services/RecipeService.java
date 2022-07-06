@@ -49,6 +49,19 @@ public class RecipeService {
         return matchingRecipes;
     }
 
+//    public ArrayList<Recipe> getRecipesByMinimumRating(Integer rating) throws NoSuchRecipeException {
+//        ArrayList<Recipe> matchingRecipes = recipeRepo.findByRating(rating);
+//
+//        if (matchingRecipes.isEmpty()) {
+//            throw new NoSuchRecipeException("No recipes could be found with that name.");
+//        }
+//
+//        for (Recipe r : matchingRecipes) {
+//            r.generateLocationURI();
+//        }
+//        return matchingRecipes;
+//    }
+
     public ArrayList<Recipe> getAllRecipes() throws NoSuchRecipeException {
         ArrayList<Recipe> recipes = new ArrayList<>(recipeRepo.findAll());
 
