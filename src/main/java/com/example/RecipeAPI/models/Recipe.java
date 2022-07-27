@@ -1,5 +1,6 @@
 package com.example.RecipeAPI.models;
 
+import com.example.RecipeAPI.security.CustomUserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -43,6 +44,11 @@ public class Recipe {
     @JoinColumn(name = "recipeId", nullable = false, foreignKey = @ForeignKey)
     private Collection<Review> reviews;
 
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private CustomUserDetails user;
+
 
     // trying to create average review of a recipe from multiple reviews
     public Integer recipeRating(){
@@ -56,6 +62,10 @@ public class Recipe {
     @Transient
     @JsonIgnore
     private URI locationURI;
+
+    public String getAuthor() {
+        return user.getUsername();
+    }
 
     public void setDifficultyRating(int difficultyRating) {
         if (difficultyRating < 0 || difficultyRating > 10) {

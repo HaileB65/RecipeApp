@@ -1,4 +1,4 @@
-package com.example.RecipeAPI.Services;
+package com.example.RecipeAPI.services;
 
 import com.example.RecipeAPI.exceptions.NoSuchRecipeException;
 import com.example.RecipeAPI.models.Recipe;

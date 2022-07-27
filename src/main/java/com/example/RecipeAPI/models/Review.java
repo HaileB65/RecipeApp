@@ -1,10 +1,10 @@
 package com.example.RecipeAPI.models;
 
+import com.example.RecipeAPI.security.CustomUserDetails;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -19,13 +19,22 @@ public class Review {
     @GeneratedValue
     private Long id;
 
-    @NotNull
-    private String username;
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private CustomUserDetails user;
+
+//    @NotNull
+//    private String username;
 
     @NotNull
     private int rating;
 
     private String description;
+
+    public String getAuthor() {
+        return user.getUsername();
+    }
 
     public void setRating(int rating) {
         if (rating <= 0 || rating > 10) {
