@@ -2,7 +2,7 @@
 
 # Description:
 
-The Vacation Finder app allows users to select a desired trip, view the itinerary, and create a personal checklist for the trip. Application administrators have the ability to create and edit trips along with their destinations.
+The Recipe app allows users to create a recipe and upload it to a web page via postman.
 
 # Pictures:
 
